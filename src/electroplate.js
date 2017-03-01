@@ -8,8 +8,6 @@ program
   .usage("<url>")
   .parse(process.argv)
 
-console.log(electronForge)
-
 async function main() {
   if (!fs.existsSync('./out')) {
     fs.mkdirSync("./out")
