@@ -16,8 +16,7 @@ async function main() {
   }
 
   await electronForge.init({
-    template: path.resolve(__dirname, '..', 'template'),
-    templateArgs: program.args,
+    template: "electroplate",
     dir: path.resolve("./out"),
   })
 }

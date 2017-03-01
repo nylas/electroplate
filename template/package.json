@@ -1,8 +1,0 @@
-{
-  "name": "electroplate-template",
-  "version": "0.0.1",
-  "description": "Electroplate dynamic Electron template",
-  "main": "index.js",
-  "author": "Evan Morikawa",
-  "license": "MIT"
-}
