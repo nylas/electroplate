@@ -1,0 +1,20 @@
+{
+  "name": "electroplate",
+  "version": "0.0.1",
+  "description": "Desktop integrate webapps",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/electroplate.js"
+  },
+  "author": "Evan Morikawa",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "2.9.0",
+    "electron-forge": "2.8.x",
+    "fs-extra-promise": "0.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "6.x.x",
+    "babel-preset-latest": "6.22.0"
+  }
+}
