@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Desktop integrate webapps",
   "main": "index.js",
+  "bin": {
+    "electroplate": "src/electroplate.js"
+  },
   "scripts": {
-    "start": "NODE_ENV=development babel-node src/electroplate.js"
+    "start": "DEBUG=* babel-node src/electroplate.js"
   },
   "author": "Evan Morikawa",
   "license": "MIT",

@@ -5,7 +5,9 @@ import electronForge from 'electron-forge'
 
 program
   .version(require('../package.json').version)
-  .usage("<url>")
+  .option("-u, --url <url>", "url to electroplate")
+  .option("-i, --icon <icon>", "icon for package")
+  .option("-n, --name <name>", "name of app")
   .parse(process.argv)
 
 async function main() {
@@ -19,8 +21,16 @@ async function main() {
   })
 
   const config = {
-    url: program.args[0]
+    url: program.url
   }
-  fs.writeFileSync(path.resolve("./out", "config.json"), JSON.stringify(config))
+  const productName = program.name || "electroplated-app"
+  const packageJSON = require(path.resolve("out", "package.json"));
+  packageJSON.config.forge.electronPackagerConfig.icon = program.icon;
+  packageJSON.name = productName;
+  packageJSON.productName = productName;
+  fs.writeFileSync(path.resolve("out", "package.json"), JSON.stringify(packageJSON))
+  fs.writeFileSync(path.resolve("out", "config.json"), JSON.stringify(config))
+
+  await electronForge.package()
 }
 main();
