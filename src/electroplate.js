@@ -19,5 +19,10 @@ async function main() {
     template: "electroplate",
     dir: path.resolve("./out"),
   })
+
+  const config = {
+    url: program.args[0]
+  }
+  fs.writeFileSync(path.resolve("./out", "config.json"), JSON.stringify(config))
 }
 main();
