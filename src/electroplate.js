@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 import fs from 'fs'
+import ora from 'ora'
 import path from 'path'
 import program from 'commander'
 import electronForge from 'electron-forge'
@@ -12,6 +13,8 @@ program
   .parse(process.argv)
 
 async function main() {
+  const spinner = ora(`Electroplating ${program.name || ""}`).start();
+
   if (!fs.existsSync('./out')) {
     fs.mkdirSync("./out")
   }
@@ -20,6 +23,8 @@ async function main() {
     template: "electroplate",
     dir: path.resolve("./out"),
   })
+
+  spinner.succeed()
 
   const config = {
     url: program.url
@@ -32,6 +37,6 @@ async function main() {
   fs.writeFileSync(path.resolve("out", "package.json"), JSON.stringify(packageJSON))
   fs.writeFileSync(path.resolve("out", "config.json"), JSON.stringify(config))
 
-  await electronForge.package()
+  await electronForge.package({dir: path.resolve("out")})
 }
 main();
