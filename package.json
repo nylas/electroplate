@@ -4,10 +4,12 @@
   "description": "Desktop integrate webapps",
   "main": "index.js",
   "bin": {
-    "electroplate": "src/electroplate.js"
+    "electroplate": "bin/electroplate.js"
   },
   "scripts": {
-    "start": "DEBUG=* babel-node src/electroplate.js"
+    "start": "DEBUG=* babel-node src/electroplate.js",
+    "compile": "babel -d bin/ src/",
+    "prepublish": "npm run compile"
   },
   "author": "Evan Morikawa",
   "license": "MIT",
